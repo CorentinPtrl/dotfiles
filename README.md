@@ -11,7 +11,7 @@
 
 <p align="center"><img src="https://i.imgur.com/NbxQ8MY.png" width=600px></p>
 
-<h2 align="center">HeinzDev NixOS Dotfiles</h2>
+<h2 align="center">Corentin NixOS Dotfiles</h2>
 
 
 ### Apps:
@@ -80,3 +80,7 @@ or
 $ cd Hyprland-dotfiles
 $ sudo nixos-rebuild switch --flake .#enzo
 ```
+
+
+### Credit
+* [Hyprland-dotfiles](https://github.com/HeinzDev/Hyprland-dotfiles)
