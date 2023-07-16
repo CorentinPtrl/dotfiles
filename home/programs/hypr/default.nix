@@ -6,7 +6,6 @@
   #];
 
   home.packages = with pkgs; [ 
-    waybar
     swww
   ];
 
@@ -57,7 +56,7 @@ monitor=eDP-1,1920x1080@60,0x0,1
 #Xdg desktop
 exec-once=~/script/start-xdg-desktop.sh
 # Status bar :) 
-#exec-once=waybar
+exec-once=waybar
 #Notification 
 exec-once=dunst
 # Wallpaper
@@ -239,8 +238,8 @@ $THEME=iamverysimple
 $THEME_DIR=$HOME/.config/hypr/themes/iamverysimple
 
 # Status bar :) 
-exec=killall -3 eww & sleep 1 && $HOME/.config/eww/launch_bar
-#exec = pkill waybar & sleep 0.5 && waybar
+#exec=killall -3 eww & sleep 1 && $HOME/.config/eww/launch_bar
+exec = pkill waybar & sleep 0.5 && waybar
 #Notification 
 exec-once=dunst
 # Wallpaper
