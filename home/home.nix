@@ -51,23 +51,5 @@
   ]);
 
   programs.home-manager.enable = true;
-
-  programs.home-manager.users.corentin = {
-    home.file = {
-      ".config/rofi/fonts.rasi" = {
-        source = ./programs/rofi/fonts.rasi;
-        recursive = true;
-      }
-      ".config/rofi/config.rasi" = {
-        source = ./programs/rofi/config.rasi;
-        recursive = true;
-      }
-      ".config/rofi/colors.rasi" = {
-        source = ./programs/rofi/colors.rasi;
-        recursive = true;
-      }
-    }
-  }
-
   home.stateVersion = "23.05";
 }
