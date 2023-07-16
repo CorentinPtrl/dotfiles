@@ -245,6 +245,7 @@ monitor=,addreserved,55,0,0,0
 exec-once=dunst
 # Wallpaper
 exec=pkill -9 swwwpaper ; "$THEME_DIR"/scripts/swwwpaper "$THEME_DIR"/wallpaper/
+exec = pkill waybar & sleep 0.5 && waybar
 exec-once=swayidle -w timeout 200 'swaylock-fancy'
 
 general {
