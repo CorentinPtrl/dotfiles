@@ -11,7 +11,7 @@
 
   programs.regreet.enable = true;
   services.greetd = {
-    enable = false;
+    enable = true;
     settings = {
       initial_session = {
         user = "corentin";
