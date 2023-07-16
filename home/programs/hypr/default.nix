@@ -53,20 +53,21 @@
 
     # Input config
     input {
-        kb_layout = fr
-        kb_variant =
-        kb_model =
-        kb_options =
-        kb_rules =
+      kb_layout=fr
+      #Remap Capslock -> Esc for Vim users
+      #kb_options=caps:escape
+      repeat_rate=50
+      repeat_delay=240
 
-        follow_mouse = 1
-
-        touchpad {
-            natural_scroll = false
-        }
-
-        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      touchpad {
+        disable_while_typing=1
+        natural_scroll=1
+        #clickfinger_behavior=1
+        middle_button_emulation=0
+        tap-to-click=1
+      }
     }
+
 
     general {
 
