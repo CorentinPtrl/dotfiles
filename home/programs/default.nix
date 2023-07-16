@@ -6,5 +6,6 @@
     ./rofi
     ./waybar
     ./zsh
+    ./eww
   ];
 }
