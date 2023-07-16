@@ -53,21 +53,20 @@
 
     # Input config
     input {
-      kb_layout=fr
-      #Remap Capslock -> Esc for Vim users
-      #kb_options=caps:escape
-      repeat_rate=50
-      repeat_delay=240
+        kb_layout = fr
+        kb_variant =
+        kb_model =
+        kb_options =
+        kb_rules =
 
-      touchpad {
-        disable_while_typing=1
-        natural_scroll=1
-        #clickfinger_behavior=1
-        middle_button_emulation=0
-        tap-to-click=1
-      }
+        follow_mouse = 1
+
+        touchpad {
+            natural_scroll = false
+        }
+
+        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
     }
-
 
     general {
 
@@ -148,15 +147,15 @@
     bind=$mainMod,ESCAPE,exec,sudo systemctl suspend
 
 
-    bindle=,XF86MonBrightnessUp,exec,~/.config/hypr/scripts/brightness up  # increase screen brightness
-    bindle=,XF86MonBrightnessDown,exec,~/.config/hypr/scripts/brightness down # decrease screen brightnes
+  bindle=,XF86MonBrightnessUp,exec,~/.config/hypr/scripts/brightness up  # increase screen brightness
+bindle=,XF86MonBrightnessDown,exec,~/.config/hypr/scripts/brightness down # decrease screen brightnes
 
 
 
-    bind=$mainModSHIFT,E,exec,wlogout
-    bind =CTRL, T, togglefloating,
-    bind=$mainModSHIFT,P,exec,pomotroid --in-process-gpu
-    
+#bind=$mainModSHIFT,C,exec,bash ~/.config/hypr/scripts/hyprPicker.sh
+bind=$mainModSHIFT,E,exec,wlogout
+bind =CTRL, T, togglefloating,
+bind=$mainModSHIFT,P,exec,pomotroid --in-process-gpu
     # Functional keybinds
     bind =,XF86AudioMicMute,exec,pamixer --default-source -t
     bind =,XF86MonBrightnessDown,exec,light -U 20
@@ -166,13 +165,6 @@
     bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
     bind =,XF86AudioPlay,exec,playerctl play-pause
     bind =,XF86AudioPause,exec,playerctl play-pause
-
-    # Screen shot
-    bind=ALT,R,exec,grim -g "$(slurp)" - | wl-copy
-    # Screen recorder
-    bind=$mainModALT,R,exec,wf-recorder -g "$(slurp)"
-    # Emoji selector
-    #bind=$mainMod,E,exec,rofi -modi emoji -show emoji
 
     # to switch between windows in a floating workspace
     bind = SUPER,Tab,cyclenext,
@@ -185,16 +177,16 @@
     bind = $mainMod, down, movefocus, d
 
     # Switch workspaces with mainMod + [0-9]
-    bind=$mainMod,ampersand,workspace,1
-    bind=$mainMod,eacute,workspace,2
-    bind=$mainMod,quotedbl,workspace,3
-    bind=$mainMod,apostrophe,workspace,4
-    bind=$mainMod,parenleft,workspace,5
-    bind=$mainMod,minus,workspace,6
-    bind=$mainMod,egrave,workspace,7
-    bind=$mainMod,underscore,workspace,8
-    bind=$mainMod,ccedilla,workspace,9
-    bind=$mainMod,agrave,workspace,10
+    bind = $mainMod, 1, workspace, 1
+    bind = $mainMod, 2, workspace, 2
+    bind = $mainMod, 3, workspace, 3
+    bind = $mainMod, 4, workspace, 4
+    bind = $mainMod, 5, workspace, 5
+    bind = $mainMod, 6, workspace, 6
+    bind = $mainMod, 7, workspace, 7
+    bind = $mainMod, 8, workspace, 8
+    bind = $mainMod, 9, workspace, 9
+    bind = $mainMod, 0, workspace, 10
 
     # Move active window to a workspace with mainMod + SHIFT + [0-9]
     bind = $mainMod SHIFT, 1, movetoworkspace, 1
