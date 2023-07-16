@@ -53,7 +53,7 @@
 
 $mainMod=CTRL
 
-#monitor=eDP-1,1920x1080@60,0x0,1
+monitor=eDP-1,1920x1080@60,0x0,1
 #Xdg desktop
 exec-once=~/script/start-xdg-desktop.sh
 # Status bar :) 
@@ -238,14 +238,12 @@ $THEME=iamverysimple
 
 $THEME_DIR=$HOME/.config/hypr/themes/iamverysimple
 
-monitor=,addreserved,55,0,0,0
 # Status bar :) 
 #exec=killall -3 eww & sleep 1 && "$THEME_DIR"/eww/launch_bar
 #Notification 
 exec-once=dunst
 # Wallpaper
 exec=pkill -9 swwwpaper ; "$THEME_DIR"/scripts/swwwpaper "$THEME_DIR"/wallpaper/
-exec = pkill waybar & sleep 0.5 && waybar
 exec-once=swayidle -w timeout 200 'swaylock-fancy'
 
 general {
