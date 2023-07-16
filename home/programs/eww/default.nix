@@ -1,14 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
-    programs.eww = {
-        enable = true;
-    };
-
-    home.file = {
-     ".config/eww" = {
-        source = ./config;
+  home.packages = (with pkgs; [ 
+    eww-wayland
+    socat
+    dunst
+  ]);
+  home.file = {
+      ".config/eww" = {
+        source = ./config/eww;
         recursive = true;
     };
   };
+
+#    programs.eww = {
+#        enable = true;
+#        configDir = config/eww;
+#    };
 }

@@ -41,11 +41,13 @@
     openrgb
     tty-clock
     xflux
-    betterdiscord-installer
+    jq
+    htop
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity
     gnome-tweaks
+    gnome-control-center
     eog
     gedit
   ]);

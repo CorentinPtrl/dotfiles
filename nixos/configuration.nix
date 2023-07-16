@@ -64,8 +64,7 @@
     description = "Corentin";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-      firefox
-      (opera.override { proprietaryCodecs = true; })
+      brave
       neofetch
       lolcat
    ];

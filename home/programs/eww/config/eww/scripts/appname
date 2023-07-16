@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 #define icons for workspaces 1-9
 #icontheme=$(geticons -U)

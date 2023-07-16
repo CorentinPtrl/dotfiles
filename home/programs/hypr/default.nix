@@ -239,8 +239,8 @@ $THEME=iamverysimple
 $THEME_DIR=$HOME/.config/hypr/themes/iamverysimple
 
 # Status bar :) 
-#exec=killall -3 eww & sleep 1 && "$THEME_DIR"/eww/launch_bar
-exec = pkill waybar & sleep 0.5 && waybar
+exec=killall -3 eww & sleep 1 && $HOME/.config/eww/launch_bar
+#exec = pkill waybar & sleep 0.5 && waybar
 #Notification 
 exec-once=dunst
 # Wallpaper
