@@ -9,7 +9,7 @@
     swww
   ];
 
-    home = {
+  home = {
     sessionVariables = {
       EDITOR = "gedit";
       BROWSER = "opera";
@@ -24,9 +24,8 @@
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
     };
+  };
 
-    };
-  
   #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -71,7 +70,7 @@ exec-once=swayidle -w timeout 2000 'swaylock' before-sleep 'swaylock -f'
 exec-once=~/.config/hypr/scripts/startpage.sh
 
 #Auth agent
-exec-once=/usr/lib/polkit-kde-authentication-agent-1
+exec-once=${pkgs.polkit_gnome}/libexec/polkit-kde-authentication-agent-1
 
 # Bluetooth
 exec-once=blueman-applet # Make sure you have installed blueman
@@ -170,14 +169,14 @@ bind=$mainModSHIFT,D,exec, rofi -show drun
 bind=$mainMod,P,pseudo,
 bind=$mainMod,ESCAPE,exec,sudo systemctl suspend
 
-bind=,XF86AudioMute,exec,~/.config/hypr/scripts/volume mute
-bind=,XF86AudioLowerVolume,exec,~/.config/hypr/scripts/volume down
-bind=,XF86AudioRaiseVolume,exec,~/.config/hypr/scripts/volume up
-bind=,XF86AudioMicMute,exec,pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-bindle=,XF86MonBrightnessUp,exec,~/.config/hypr/scripts/brightness up  # increase screen brightness
-bindle=,XF86MonBrightnessDown,exec,~/.config/hypr/scripts/brightness down # decrease screen brightnes
-
+bind =,XF86AudioMicMute,exec,pamixer --default-source -t
+bind =,XF86MonBrightnessDown,exec,light -U 20
+bind =,XF86MonBrightnessUp,exec,light -A 20
+bind =,XF86AudioMute,exec,pamixer -t
+bind =,XF86AudioLowerVolume,exec,pamixer -d 10
+bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
+bind =,XF86AudioPlay,exec,playerctl play-pause
+bind =,XF86AudioPause,exec,playerctl play-pause
 
 
 #bind=$mainModSHIFT,C,exec,bash ~/.config/hypr/scripts/hyprPicker.sh
@@ -222,16 +221,16 @@ bind=$mainMod,underscore,workspace,8
 bind=$mainMod,ccedilla,workspace,9
 bind=$mainMod,agrave,workspace,10
 
-bind=$mainModSHIFT,1,movetoworkspacesilent,1
-bind=$mainModSHIFT,2,movetoworkspacesilent,2
-bind=$mainModSHIFT,3,movetoworkspacesilent,3
-bind=$mainModSHIFT,4,movetoworkspacesilent,4
-bind=$mainModSHIFT,5,movetoworkspacesilent,5
-bind=$mainModSHIFT,6,movetoworkspacesilent,6
-bind=$mainModSHIFT,7,movetoworkspacesilent,7
-bind=$mainModSHIFT,8,movetoworkspacesilent,8
-bind=$mainModSHIFT,9,movetoworkspacesilent,9
-bind=$mainModSHIFT,0,movetoworkspacesilent,10
+bind=$mainModSHIFT,ampersand,movetoworkspacesilent,1
+bind=$mainModSHIFT,eacute,movetoworkspacesilent,2
+bind=$mainModSHIFT,quotedbl,movetoworkspacesilent,3
+bind=$mainModSHIFT,apostrophe,movetoworkspacesilent,4
+bind=$mainModSHIFT,parenleft,movetoworkspacesilent,5
+bind=$mainModSHIFT,minus,movetoworkspacesilent,6
+bind=$mainModSHIFT,egrave,movetoworkspacesilent,7
+bind=$mainModSHIFT,underscore,movetoworkspacesilent,8
+bind=$mainModSHIFT,ccedilla,movetoworkspacesilent,9
+bind=$mainModSHIFT,agrave,movetoworkspacesilent,10
 
 $THEME=iamverysimple
 
@@ -243,7 +242,7 @@ exec = pkill waybar & sleep 0.5 && waybar
 #Notification 
 exec-once=dunst
 # Wallpaper
-exec=pkill -9 swwwpaper ; "$THEME_DIR"/scripts/swwwpaper "$THEME_DIR"/wallpaper/
+exec=pkill -9 swwwpaper ; "$HOME"/.config/swww/swwwpaper "$HOME"/.config/swww/wallpapers
 exec-once=swayidle -w timeout 200 'swaylock-fancy'
 
 general {

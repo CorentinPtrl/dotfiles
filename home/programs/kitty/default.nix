@@ -91,7 +91,7 @@
 
         # Title bar
         macos_titlebar_color #16161e
-
+	
         # {{{ Keybindings
         map kitty_mod+t     new_tab_with_cwd
         map ctrl+d	copy_to_clipboard

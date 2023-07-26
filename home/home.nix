@@ -35,14 +35,20 @@
     bibata-cursors
     catimg
     vscode
-    lollypop
-    lutris
     nitch
     openrgb
     tty-clock
     xflux
     jq
     htop
+    spotify
+    upower
+    jetbrains-toolbox
+    unzip
+    speedtest-cli
+    pavucontrol
+    polkit_gnome
+    ktlint
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

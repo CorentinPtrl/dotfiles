@@ -16,10 +16,5 @@
       name = "Nightfox-Dusk-B";
     #  package = pkgs.catppuccin-gtk;
     };
-
-    cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-    };
   };
 }

@@ -14,7 +14,7 @@
   networking.hostName = "nix-as";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/Sao_Paulo";
+  time.timeZone = "Europe/Paris";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.UTF-8";
     LC_IDENTIFICATION = "pt_BR.UTF-8";
@@ -36,11 +36,17 @@
     layout = "fr";
     xkbVariant = "";
   };
-  # Configure console keymap
+
   console.keyMap = "fr";
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -48,6 +54,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.blueman.enable = true;
 
   # add /.local to $PATH
   environment.variables={
@@ -58,18 +65,21 @@
    ];
    NIXPKGS_ALLOW_UNFREE = "1";
   };
-  
+  programs.zsh.enable = true;  
   users.users.corentin = {
     isNormalUser = true;
     description = "Corentin";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    #shell = pkgs.zsh;
     packages = with pkgs; [
       brave
       neofetch
       lolcat
+      vmware-workstation
    ];
   };
 
+virtualisation.vmware.host.enable = true;
   # Enable automatic login for the user.
   #services.xserver.displayManager.autoLogin.enable = true;
   #services.xserver.displayManager.autoLogin.user = "corentin";

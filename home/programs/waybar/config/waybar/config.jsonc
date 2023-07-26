@@ -7,7 +7,7 @@
     "margin-left": 0,
     "margin-right": 0,
     "modules-left": ["custom/launcher", "wlr/workspaces", "custom/playerctl", "custom/playerlabel"],
-    "modules-center": ["cpu", "memory", "disk"],
+    "modules-center": ["cpu", "memory", "battery", "disk"],
     "modules-right": ["tray", "custom/randwall", "network", "pulseaudio", "clock"],
     // Modules configuration
 	"clock": {
