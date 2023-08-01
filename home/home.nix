@@ -6,6 +6,7 @@
     ./programs
     ./scripts
     ./themes
+    ./games
   ];
 
   home = {
@@ -49,6 +50,7 @@
     pavucontrol
     polkit_gnome
     ktlint
+    ansible
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity
