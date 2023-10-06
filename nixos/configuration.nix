@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-
+{ config, pkgs, inputs, system, lib, ... }:
 {
   imports =
     [
@@ -13,19 +12,13 @@
 
   networking.hostName = "nix-as";
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+  environment.etc = {
+    "resolv.conf".text = "nameserver 1.1.1.1\n";
+  };
 
   time.timeZone = "Europe/Paris";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
-  };
+  i18n.defaultLocale = "en_US.UTF-8";
 
    services.xserver = {
    enable = true;
@@ -36,6 +29,7 @@
     layout = "fr";
     xkbVariant = "";
   };
+  services.gvfs.enable = true;
 
   console.keyMap = "fr";
 
@@ -65,7 +59,8 @@
    ];
    NIXPKGS_ALLOW_UNFREE = "1";
   };
-  programs.zsh.enable = true;  
+  #programs.zsh.enable = true;
+#  users.defaultUserShell = pkgs.zsh;
   users.users.corentin = {
     isNormalUser = true;
     description = "Corentin";
@@ -76,7 +71,38 @@
       neofetch
       lolcat
       vmware-workstation
+      thefuck
    ];
+  };
+  programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+       enable = true;
+       plugins = [ "git" "thefuck" ];
+       theme = "robbyrussell";
+    };
+  };
+  programs.starship = {
+    enable = true;
+    # Configuration written to ~/.config/starship.toml
+    settings = {
+      right_format = "$time";
+      line_break.disabled = true;
+      azure = {
+         disabled = false;
+         format = "on [$symbol($username)]($style) ";
+         symbol = "ﴃ ";
+         style = "blue bold";
+      };
+      username = {
+         #style_user = "bold dimmed blue";
+         show_always = true;
+      };
+      hostname = {
+         ssh_only = false;
+      };
+      package.disabled = true;
+    };
   };
 
 virtualisation.vmware.host.enable = true;

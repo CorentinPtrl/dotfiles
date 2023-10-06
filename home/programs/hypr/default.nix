@@ -259,10 +259,10 @@ general {
 
 decoration {
     rounding=13
-    blur=1
-    blur_size=6.8 # minimum 1
-    blur_passes=2 # minimum 1, more passes = more resource intensive.
-    blur_new_optimizations = true
+    #blur=1
+    #blur_size=6.8 # minimum 1
+    #blur_passes=2 # minimum 1, more passes = more resource intensive.
+    #blur_new_optimizations = true
     # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around >
     # if you want heavy blur, you need to up the blur_passes.
     # the more passes, the more you can up the blur_size without noticing artifacts.

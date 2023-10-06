@@ -6,7 +6,6 @@
     ./programs
     ./scripts
     ./themes
-    ./games
   ];
 
   home = {
@@ -44,13 +43,33 @@
     htop
     spotify
     upower
-    jetbrains-toolbox
     unzip
     speedtest-cli
     pavucontrol
     polkit_gnome
     ktlint
     ansible
+    sshpass
+    minecraft
+    jdk
+    jetbrains-toolbox
+    notion-app-enhanced
+    rar
+    filezilla
+    gradle
+    nmap
+    python3
+    ipscan
+    dotnet-sdk
+    google-chrome
+    teams
+    jd-gui
+    zip
+    atlassian-jira
+    ganttproject-bin
+    arduino
+    sshs
+    p7zip
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity
