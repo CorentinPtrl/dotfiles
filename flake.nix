@@ -22,11 +22,26 @@ let
 
 in {
 nixosConfigurations = {
-    corentin = lib.nixosSystem rec {
+    zenbook = lib.nixosSystem rec {
       inherit system;
       specialArgs = { inherit hyprland; };
       modules = [ 
-        ./nixos/configuration.nix
+        ./nixos/zenbook/configuration.nix
+        hyprland.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.corentin = import ./home/home.nix ;
+          home-manager.extraSpecialArgs = specialArgs;
+        }
+      ];
+    };
+  asrock = lib.nixosSystem rec {
+      inherit system;
+      specialArgs = { inherit hyprland; };
+      modules = [ 
+        ./nixos/asrock/configuration.nix
         hyprland.nixosModules.default
         home-manager.nixosModules.home-manager
         {

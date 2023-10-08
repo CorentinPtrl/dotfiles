@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../hosts/desktop
+      ../hosts/zenbook
     ];
 
   # Bootloader.
