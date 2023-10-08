@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../hosts/asrock
+      ../../hosts/asrock
     ];
 
   # Bootloader.
@@ -79,7 +79,7 @@
    NIXPKGS_ALLOW_UNFREE = "1";
   };
   #programs.zsh.enable = true;
-#  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
   users.users.corentin = {
     isNormalUser = true;
     description = "Corentin";
@@ -124,7 +124,7 @@
     };
   };
 
-virtualisation.vmware.host.enable = true;
+ virtualisation.vmware.host.enable = true;
   # Enable automatic login for the user.
   #services.xserver.displayManager.autoLogin.enable = true;
   #services.xserver.displayManager.autoLogin.user = "corentin";

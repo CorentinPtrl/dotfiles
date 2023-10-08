@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../hosts/zenbook
+      ../../hosts/zenbook
     ];
 
   # Bootloader.
@@ -60,7 +60,7 @@
    NIXPKGS_ALLOW_UNFREE = "1";
   };
   #programs.zsh.enable = true;
-#  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
   users.users.corentin = {
     isNormalUser = true;
     description = "Corentin";
