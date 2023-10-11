@@ -28,7 +28,7 @@ let
     if command -v swww >/dev/null 2>&1; then 
           killall dynamic_wallpaper
            if [[ "$GTK_THEME" == "Nightfox-Dusk-B" ]]; then
-             swww img /home/corentin/Imagens/wallpapers/menhera.jpg --transition-type random
+             swww img /home/enzo/Imagens/wallpapers/menhera.jpg --transition-type random
            fi
     fi
   '';

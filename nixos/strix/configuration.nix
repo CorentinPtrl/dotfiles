@@ -3,14 +3,14 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../hosts/zenbook
+      ../../hosts/strix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nix-as";
+  networking.hostName = "nix-strix";
   networking.networkmanager.enable = true;
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   environment.etc = {
@@ -22,13 +22,32 @@
 
    services.xserver = {
    enable = true;
-    #displayManager = {
-    #    gdm.enable = true;
-    #};
+    videoDrivers = ["nvidia"];
     # X11 keymap
     layout = "fr";
     xkbVariant = "";
   };
+
+  #NvidiaConfig
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "#nvidia-x11"
+    ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+  };
+
   services.gvfs.enable = true;
 
   console.keyMap = "fr";
@@ -61,9 +80,9 @@
   };
   #programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.corentin = {
+  users.users.enzo = {
     isNormalUser = true;
-    description = "Corentin";
+    description = "Enzo";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     #shell = pkgs.zsh;
     packages = with pkgs; [
@@ -105,10 +124,10 @@
     };
   };
 
-virtualisation.vmware.host.enable = true;
+ virtualisation.vmware.host.enable = true;
   # Enable automatic login for the user.
   #services.xserver.displayManager.autoLogin.enable = true;
-  #services.xserver.displayManager.autoLogin.user = "corentin";
+  #services.xserver.displayManager.autoLogin.user = "enzo";
 
   # Workaround for GNOME autologin:
   #systemd.services."getty@tty1".enable = false;
