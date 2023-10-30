@@ -24,7 +24,7 @@
     pamixer
     mpc-cli
     discord
-    exa
+    eza
     btop
     ranger
     wlr-randr
@@ -51,7 +51,7 @@
     ansible
     sshpass
     minecraft
-    jdk
+    jdk17
     jetbrains-toolbox
     notion-app-enhanced
     rar
@@ -60,9 +60,8 @@
     nmap
     python3
     ipscan
-    dotnet-sdk
+    dotnet-sdk_7
     google-chrome
-    teams
     jd-gui
     zip
     atlassian-jira
@@ -70,6 +69,15 @@
     arduino
     sshs
     p7zip
+    polkit
+    polkit_gnome
+    polkit-kde-agent
+    postgresql_14
+    minio-client
+    rustup
+    gcc
+    gnumake
+    prismlauncher-unwrapped
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

@@ -8,9 +8,11 @@ inputs = {
    inputs.nixpkgs.follows = "nixpkgs";
   };
   hyprland.url = "github:hyprwm/Hyprland";
+  aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+  aagl.inputs.nixpkgs.follows = "nixpkgs"; # Name of nixpkgs input you want to use
 };
 
-outputs = { self, nixpkgs, home-manager, hyprland, ...}: 
+outputs = { self, nixpkgs, home-manager, hyprland, aagl, ...}: 
 
 let
   system = "x86_64-linux";
@@ -19,7 +21,6 @@ let
 	  config.allowUnfree = true;	
   };
   lib = nixpkgs.lib;
-
 in {
 nixosConfigurations = {
     zenbook = lib.nixosSystem rec {
@@ -32,7 +33,7 @@ nixosConfigurations = {
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix ;
+          home-manager.users.corentin = import ./home/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];
@@ -45,9 +46,12 @@ nixosConfigurations = {
         hyprland.nixosModules.default
         home-manager.nixosModules.home-manager
         {
+          imports = [ aagl.nixosModules.default ];
+          nix.settings = aagl.nixConfig; # Set up Cachix
+          programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix ;
+          home-manager.users.corentin = import ./home/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];

@@ -7,6 +7,8 @@
 
   home.packages = with pkgs; [ 
     swww
+    playerctl
+    brightnessctl
   ];
 
   home = {
@@ -30,7 +32,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    nvidiaPatches = true;
+    #nvidiaPatches = true;
     extraConfig = ''
 
    <########################################################################################
@@ -70,7 +72,7 @@ exec-once=swayidle -w timeout 2000 'swaylock' before-sleep 'swaylock -f'
 exec-once=~/.config/hypr/scripts/startpage.sh
 
 #Auth agent
-exec-once=${pkgs.polkit_gnome}/libexec/polkit-kde-authentication-agent-1
+exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 
 
 # Bluetooth
 exec-once=blueman-applet # Make sure you have installed blueman
@@ -170,14 +172,20 @@ bind=$mainMod,P,pseudo,
 bind=$mainMod,ESCAPE,exec,sudo systemctl suspend
 
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t
+
+#Brightness
 bind =,XF86MonBrightnessDown,exec,light -U 20
 bind =,XF86MonBrightnessUp,exec,light -A 20
+
+#Audio
 bind =,XF86AudioMute,exec,pamixer -t
 bind =,XF86AudioLowerVolume,exec,pamixer -d 10
 bind =,XF86AudioRaiseVolume,exec,pamixer -i 10
-bind =,XF86AudioPlay,exec,playerctl play-pause
-bind =,XF86AudioPause,exec,playerctl play-pause
 
+#Media
+bind =,XF86AudioPlay,exec,playerctl play-pause
+bind =,XF86AudioNext,exec,playerctl next
+bind =,XF86AudioPrev,exec,playerctl previous
 
 #bind=$mainModSHIFT,C,exec,bash ~/.config/hypr/scripts/hyprPicker.sh
 bind=$mainModSHIFT,E,exec,wlogout

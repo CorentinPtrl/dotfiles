@@ -60,6 +60,7 @@
       Enable = "Source,Sink,Media,Socket";
     };
   };
+  security.polkit.enable = true;  
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
