@@ -14,7 +14,6 @@
   };
 
   home.packages = (with pkgs; [ 
-    cool-retro-term
     neovim
     nano
     wget
@@ -48,7 +47,7 @@
     pavucontrol
     polkit_gnome
     ktlint
-    ansible
+    (ansible.override { windowsSupport = true; })
     sshpass
     minecraft
     jdk17
@@ -78,6 +77,9 @@
     gcc
     gnumake
     prismlauncher-unwrapped
+    steam
+    progress
+    openvpn
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

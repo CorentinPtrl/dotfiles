@@ -13,9 +13,9 @@
 
   home = {
     sessionVariables = {
-      EDITOR = "gedit";
-      BROWSER = "opera";
-      TERMINAL = "cool-retro-term";
+      EDITOR = "nano";
+      BROWSER = "brave";
+      TERMINAL = "kitty";
       __GL_VRR_ALLOWED="1";
       WLR_NO_HARDWARE_CURSORS = "1";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
@@ -25,6 +25,7 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
+      NIXOS_OZONE_WL = "1";
     };
   };
 
@@ -32,7 +33,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    #nvidiaPatches = true;
     extraConfig = ''
 
    <########################################################################################
@@ -77,6 +77,9 @@ exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 # Bluetooth
 exec-once=blueman-applet # Make sure you have installed blueman
 
+#Auto Start
+exec-once=discord
+exec-once=jetbrains-toolbox --minimize
 # Screen Sharing 
 exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once=~/.config/hypr/scripts/screensharing.sh
@@ -174,8 +177,8 @@ bind=$mainMod,ESCAPE,exec,sudo systemctl suspend
 bind =,XF86AudioMicMute,exec,pamixer --default-source -t
 
 #Brightness
-bind =,XF86MonBrightnessDown,exec,light -U 20
-bind =,XF86MonBrightnessUp,exec,light -A 20
+bind =,XF86MonBrightnessDown,exec,brightnessctl set 1%-
+bind =,XF86MonBrightnessUp,exec,brightnessctl set 1%+
 
 #Audio
 bind =,XF86AudioMute,exec,pamixer -t

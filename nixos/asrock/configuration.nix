@@ -35,17 +35,12 @@
     driSupport32Bit = true;
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "#nvidia-x11"
-    ];
-
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
 
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   services.gvfs.enable = true;
@@ -146,7 +141,8 @@
 
   system.autoUpgrade = {
    enable = true;
-   channel = "https://nixos.org/channels/nixos-23.05";
+   flake = "/home/corentin/dotfiles";
+   allowReboot = false;
   };
  
   system.stateVersion = "23.05";
