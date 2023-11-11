@@ -1,8 +1,7 @@
-{ hyprland, pkgs, ...}: {
+{ hyprland, terraform-providers-test, pkgs, ...}: {
 
   imports = [
     hyprland.homeManagerModules.default
-    #./environment
     ./programs
     ./scripts
     ./themes
@@ -34,10 +33,6 @@
     bibata-cursors
     catimg
     vscode
-    nitch
-    openrgb
-    tty-clock
-    xflux
     jq
     htop
     spotify
@@ -81,13 +76,13 @@
     progress
     openvpn
     gh
+    vmware-horizon-client
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity
     gnome-tweaks
     gnome-control-center
     eog
-    gedit
   ]);
 
   programs.home-manager.enable = true;

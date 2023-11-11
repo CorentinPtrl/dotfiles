@@ -6,9 +6,6 @@
     #./scripts
   ];
 
-  #services.xserver.displayManager.sessionPackages = [ pkgs.hyprland ];
-  #users.users.greeter.packages = [ pkgs.hyprland ];
-
   programs.regreet.enable = true;
   services.greetd = {
     enable = true;
@@ -35,8 +32,10 @@ programs = {
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      gtkUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
     };
   };
 }
