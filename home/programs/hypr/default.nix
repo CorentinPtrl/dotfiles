@@ -289,6 +289,7 @@ exec = pkill waybar & sleep 0.5 && waybar
 exec-once=dunst
 # Wallpaper
 exec=pkill -9 swwwpaper ; "$HOME"/.config/swww/swwwpaper "$HOME"/.config/swww/wallpapers
+exec=pkill -9 swwwpaper ; dynamic_wallpaper
 exec-once=swayidle -w timeout 200 'swaylock-fancy'
 
 general {
