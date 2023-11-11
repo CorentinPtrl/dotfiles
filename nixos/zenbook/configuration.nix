@@ -22,13 +22,10 @@
 
    services.xserver = {
    enable = true;
-    #displayManager = {
-    #    gdm.enable = true;
-    #};
-    # X11 keymap
     layout = "fr";
     xkbVariant = "";
   };
+
   services.gvfs.enable = true;
 
   console.keyMap = "fr";
@@ -41,7 +38,9 @@
       Enable = "Source,Sink,Media,Socket";
     };
   };
+  security.polkit.enable = true;  
   security.rtkit.enable = true;
+  security.pam.services.swaylock = {};
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -78,7 +77,7 @@
     enable = true;
     ohMyZsh = {
        enable = true;
-       plugins = [ "git" "thefuck" ];
+       plugins = [ "git" "thefuck" "docker" "terraform" ];
        theme = "robbyrussell";
     };
   };
@@ -126,7 +125,8 @@ virtualisation.vmware.host.enable = true;
 
   system.autoUpgrade = {
    enable = true;
-   channel = "https://nixos.org/channels/nixos-23.05";
+   flake = "/home/corentin/dotfiles";
+   allowReboot = false;
   };
  
   system.stateVersion = "23.05";

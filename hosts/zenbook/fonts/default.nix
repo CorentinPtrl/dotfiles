@@ -5,7 +5,7 @@
     twemoji-color-font
   ];
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       jetbrains-mono
       corefonts      
       noto-fonts
