@@ -80,6 +80,7 @@
     steam
     progress
     openvpn
+    gh
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

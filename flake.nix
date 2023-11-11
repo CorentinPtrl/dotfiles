@@ -9,10 +9,12 @@ inputs = {
   };
   hyprland.url = "github:hyprwm/Hyprland";
   aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-  aagl.inputs.nixpkgs.follows = "nixpkgs"; # Name of nixpkgs input you want to use
+  aagl.inputs.nixpkgs.follows = "nixpkgs";
+  terraform-providers-bin.url = "github:nix-community/nixpkgs-terraform-providers-bin";
+  terraform-providers-bin.inputs.nixpkgs.follows = "nixpkgs";
 };
 
-outputs = { self, nixpkgs, home-manager, hyprland, aagl, ...}: 
+outputs = { self, nixpkgs, home-manager, hyprland, aagl, terraform-providers-bin, ...}: 
 
 let
   system = "x86_64-linux";
@@ -21,11 +23,12 @@ let
 	  config.allowUnfree = true;	
   };
   lib = nixpkgs.lib;
+  terraform-providers = terraform-providers-bin.legacyPackages.${system};
 in {
 nixosConfigurations = {
     zenbook = lib.nixosSystem rec {
       inherit system;
-      specialArgs = { inherit hyprland; };
+      specialArgs = { inherit hyprland terraform-providers; };
       modules = [ 
         ./nixos/zenbook/configuration.nix
         hyprland.nixosModules.default
@@ -40,7 +43,7 @@ nixosConfigurations = {
     };
   asrock = lib.nixosSystem rec {
       inherit system;
-      specialArgs = { inherit hyprland; };
+      specialArgs = { inherit hyprland terraform-providers; };
       modules = [ 
         ./nixos/asrock/configuration.nix
         hyprland.nixosModules.default
