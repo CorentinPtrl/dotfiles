@@ -1,9 +1,8 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./fonts
-    ./virtualisation
-    #./scripts
+    ./configuration.nix
+    ./hardware-configuration.nix
   ];
 
   programs.regreet.enable = true;

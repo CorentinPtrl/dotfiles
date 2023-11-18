@@ -26,7 +26,7 @@ let
   terraform-providers = terraform-providers-bin.legacyPackages.${system};
 in {
 nixosConfigurations = {
-    zenbook = lib.nixosSystem rec {
+    "corentin@zenbook" = lib.nixosSystem rec {
       inherit system;
       specialArgs = { inherit hyprland terraform-providers; };
       modules = [ 
@@ -36,7 +36,6 @@ nixosConfigurations = {
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];
@@ -45,7 +44,12 @@ nixosConfigurations = {
       inherit system;
       specialArgs = { inherit hyprland terraform-providers; };
       modules = [ 
-        ./nixos/asrock/configuration.nix
+        ./hosts/asrock/default.nix
+        ./modules/core.nix
+        ./modules/desktop.nix
+        ./modules/dev.nix
+        ./modules/fonts.nix
+	./modules/virtualisation.nix
         hyprland.nixosModules.default
         home-manager.nixosModules.home-manager
         {
@@ -54,7 +58,6 @@ nixosConfigurations = {
           programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];
