@@ -10,7 +10,7 @@ inputs = {
   hyprland.url = "github:hyprwm/Hyprland";
   aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   aagl.inputs.nixpkgs.follows = "nixpkgs";
-  terraform-providers-bin.url = "github:nix-community/nixpkgs-terraform-providers-bin";
+  terraform-providers-bin.url = "github:CorentinPtrl/nixpkgs-terraform-providers-bin";
   terraform-providers-bin.inputs.nixpkgs.follows = "nixpkgs";
 };
 
