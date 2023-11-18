@@ -3,7 +3,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../home/profiles/asrock
     ];
 
   # Bootloader.
@@ -17,7 +16,7 @@
     "resolv.conf".text = "nameserver 1.1.1.1\n";
   };
 
-  xserver.videoDrivers = ["nvidia"];
+  #xserver.videoDrivers = ["nvidia"];
 
   #NvidiaConfig
   hardware.opengl = {

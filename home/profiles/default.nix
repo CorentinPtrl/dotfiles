@@ -8,13 +8,21 @@
   sharedModules = [
     ../.
     ../shell
+    module_args
+    inputs.hyprland.homeManagerModules.default
   ];
 
   homeImports = {
     "corentin@asrock" = [./asrock] ++ sharedModules;
     "corentin@zenbook" = [./zenbook] ++ sharedModules;
   };
+  inherit (inputs.home-manager.lib) homeManagerConfiguration;
 in {
+  imports = [
+    # we need to pass this to NixOS' HM module
+    {_module.args = {inherit homeImports;};}
+  ];
+
   flake = {
     homeConfigurations = withSystem "x86_64-linux" ({pkgs, ...}: {
       "corentin@asrock" = homeManagerConfiguration {

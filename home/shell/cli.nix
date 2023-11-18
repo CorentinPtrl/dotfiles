@@ -4,9 +4,7 @@
   home.packages = with pkgs; [
     # archives
     zip
-    unzip
     rar
-    unrar
     p7zip
     
     # utils

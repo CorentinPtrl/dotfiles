@@ -2,6 +2,7 @@
 
 {
   home.packages = (with pkgs; [
+    brave
     discord
     spotify
     pavucontrol
@@ -15,7 +16,7 @@
     ganttproject-bin
     polkit
     polkit_gnome
-    polkit_kde-agent
+    polkit-kde-agent
     prismlauncher-unwrapped
     steam
     steamcmd

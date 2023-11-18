@@ -5,14 +5,13 @@
         zsh = {
             enable = true;
             oh-my-zsh = {
-                enable = false;
+                enable = true;
                 theme = "robbyrussel";
                 plugins = [
                     "git"
                     "thefuck"
                 ];
             };
-
             enableAutosuggestions = true;
             enableCompletion = true;
             syntaxHighlighting.enable = true;
@@ -20,6 +19,7 @@
                 grep = "grep --color";
                 ip = "ip --color";
                 l = "eza -l";
+                ls = "eza";
                 la = "eza -la";
                 md = "mkdir -p";
                 ppc = "powerprofilesctl";
@@ -29,5 +29,5 @@
             };
             shellGlobalAliases = {eza = "eza --icons --git";};
         };
-    }
+    };
 }

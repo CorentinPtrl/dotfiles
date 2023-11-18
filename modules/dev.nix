@@ -4,7 +4,6 @@
   home.packages = (with pkgs; [
     gnumake
     (ansible.override { windowsSupport = true; })
-    vmware-horizon-client
     vmware-workstation
     packer
     ktlint

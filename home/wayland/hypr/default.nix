@@ -87,8 +87,9 @@ in {
 
 
 $mainMod=CTRL
+monitor=HDMI-A-1,1920x1080@60,0x0,1
+monitor=DP-2,1920x1080@60,1920x0,1
 
-monitor=eDP-1,1920x1080@60,0x0,1
 #Xdg desktop
 exec-once=~/script/start-xdg-desktop.sh
 # Status bar :) 

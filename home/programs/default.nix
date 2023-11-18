@@ -1,6 +1,6 @@
 {
   imports = [
      ./rofi
-     ./terraform
+#     ./terraform
   ];
 }

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./eww
+#    ./eww
     ./hypr
     ./swwwpaper
     ./waybar
