@@ -6,7 +6,7 @@
     ./hypr
     ./swwwpaper
     ./waybar
-    ./gtk.nix
+    #./gtk.nix
   ];
 
   home.packages = with pkgs; [

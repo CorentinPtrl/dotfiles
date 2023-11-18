@@ -1,5 +1,6 @@
 {
   imports = [
+    ../../.
     ../../programs
     ../../wayland
     ../../terminals/kitty.nix

@@ -44,12 +44,12 @@ nixosConfigurations = {
       inherit system;
       specialArgs = { inherit hyprland terraform-providers; };
       modules = [ 
-        ./hosts/asrock/default.nix
-        ./modules/core.nix
-        ./modules/desktop.nix
-        ./modules/dev.nix
-        ./modules/fonts.nix
-	./modules/virtualisation.nix
+#        ./hosts/asrock/default.nix
+#        ./modules/core.nix
+#        ./modules/desktop.nix
+#        ./modules/dev.nix
+#        ./modules/fonts.nix
+#	./modules/virtualisation.nix
         hyprland.nixosModules.default
         home-manager.nixosModules.home-manager
         {
@@ -58,6 +58,7 @@ nixosConfigurations = {
           programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.users.corentin = import ./home;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];
