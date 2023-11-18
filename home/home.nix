@@ -1,4 +1,4 @@
-{ hyprland, terraform-providers-test, pkgs, ...}: {
+{ hyprland, pkgs, ...}: {
 
   imports = [
     hyprland.homeManagerModules.default
@@ -52,13 +52,11 @@
     filezilla
     gradle
     nmap
-    python3
     ipscan
     dotnet-sdk_7
     google-chrome
     jd-gui
     zip
-    atlassian-jira
     ganttproject-bin
     arduino
     sshs
@@ -77,7 +75,15 @@
     openvpn
     gh
     vmware-horizon-client
-  ]) ++ (with pkgs.gnome; [ 
+    packer
+    (python311.withPackages (ps: with ps; [
+      pip
+      pycryptodome
+      setuptools
+    ]))
+    mpvpaper
+    steamcmd
+   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity
     gnome-tweaks

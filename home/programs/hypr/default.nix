@@ -29,7 +29,7 @@ in {
   };
 
   services.swayidle = {
-      enable = true;
+      enable = false;
       systemdTarget = "graphical-session.target";
 
       events = [
@@ -45,7 +45,7 @@ in {
           command = "${hyprctl} dispatch dpms off";
         }
         {
-          timeout = 6 * 60;
+          timeout = 15 * 60;
           command = "${loginctl} lock-session";
         }
     ];
