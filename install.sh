@@ -21,4 +21,4 @@ script_dir="$HOME/script"
 #  chmod +x "$script_dir/cool-retro-term.sh""
 #fi
 
-sudo nixos-rebuild switch --flake .#asrock --show-trace 
+sudo nixos-rebuild switch --flake .#zenbook --show-trace 
