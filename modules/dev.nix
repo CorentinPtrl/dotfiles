@@ -14,5 +14,7 @@
     rustup 
     gcc
     gnumake
+    go
+    nodejs_21
   ]);
 }

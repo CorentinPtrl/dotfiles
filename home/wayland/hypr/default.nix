@@ -89,6 +89,7 @@ in {
 $mainMod=CTRL
 monitor=HDMI-A-1,1920x1080@60,0x0,1
 monitor=DP-2,1920x1080@60,1920x0,1
+monitor=,preferred,auto,1
 
 #Xdg desktop
 exec-once=~/script/start-xdg-desktop.sh
@@ -97,7 +98,7 @@ exec-once=waybar
 #Notification 
 exec-once=dunst
 # Wallpaper
-#exec-once=swaybg -o \* -i ~/.config/hypr/wallpapers/tree.jpg -m fill
+exec-once=swww-daemon init && pkill dynamic_wallpap && dynamic_wallpaper
 # For screen sharing 
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # For keyboard 

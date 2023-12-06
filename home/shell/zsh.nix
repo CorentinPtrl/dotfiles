@@ -1,12 +1,16 @@
 { config, pkgs, user, ... }:
 
 {
+    home.packages = (with pkgs; [
+      thefuck
+    ]);
+
     programs = {
         zsh = {
             enable = true;
             oh-my-zsh = {
                 enable = true;
-                theme = "robbyrussel";
+                theme = "robbyrussell";
                 plugins = [
                     "git"
                     "thefuck"

@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nix-as";
+  networking.hostName = "nix-zen";
   networking.networkmanager.enable = true;
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   environment.etc = {

@@ -22,6 +22,8 @@
     steamcmd
     bibata-cursors
     catimg
+    cura
+    blender
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

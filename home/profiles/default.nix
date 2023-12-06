@@ -8,6 +8,7 @@
   sharedModules = [
     ../.
     ../shell
+    ../scripts
     module_args
     inputs.hyprland.homeManagerModules.default
   ];

@@ -7,8 +7,4 @@
     ../../../modules/desktop.nix
     ../../../modules/dev.nix
   ];
-
-  home.sessionVariables = {
-    GDK_SCALE = "2";
-  };
 }

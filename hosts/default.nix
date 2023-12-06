@@ -23,6 +23,9 @@
       modules =
         [
           ./zenbook
+           ../modules/core.nix
+           ../modules/fonts.nix
+           ../modules/virtualisation.nix
           {home-manager.users.corentin.imports = homeImports."corentin@zenbook";}
         ]
         ++ sharedModules;
