@@ -7,6 +7,10 @@ inputs = {
    url = "github:nix-community/home-manager";
    inputs.nixpkgs.follows = "nixpkgs";
   };
+  flake-parts = {
+   url = "github:hercules-ci/flake-parts";
+   inputs.nixpkgs-lib.follows = "nixpkgs";
+  };
   hyprland.url = "github:hyprwm/Hyprland";
   aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   aagl.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,51 +18,15 @@ inputs = {
   terraform-providers-bin.inputs.nixpkgs.follows = "nixpkgs";
 };
 
-outputs = { self, nixpkgs, home-manager, hyprland, aagl, terraform-providers-bin, ...}: 
+outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
 
-let
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-	  config.allowUnfree = true;	
-  };
-  lib = nixpkgs.lib;
-  terraform-providers = terraform-providers-bin.legacyPackages.${system};
-in {
-nixosConfigurations = {
-    zenbook = lib.nixosSystem rec {
-      inherit system;
-      specialArgs = { inherit hyprland terraform-providers; };
-      modules = [ 
-        ./nixos/zenbook/configuration.nix
-        hyprland.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix;
-          home-manager.extraSpecialArgs = specialArgs;
-        }
+      imports = [
+        ./home/profiles
+        ./hosts
+        ./modules
       ];
+
     };
-  asrock = lib.nixosSystem rec {
-      inherit system;
-      specialArgs = { inherit hyprland terraform-providers; };
-      modules = [ 
-        ./nixos/asrock/configuration.nix
-        hyprland.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          imports = [ aagl.nixosModules.default ];
-          nix.settings = aagl.nixConfig; # Set up Cachix
-          programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.corentin = import ./home/home.nix;
-          home-manager.extraSpecialArgs = specialArgs;
-        }
-      ];
-    };
-  };
-};
 }

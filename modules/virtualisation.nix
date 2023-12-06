@@ -3,7 +3,8 @@
 {
   virtualisation = {
     docker.enable = true;
-  };
+    vmware.host.enable = true; 
+ };
 
   users.groups.docker.members = [ "corentin" ];
 
