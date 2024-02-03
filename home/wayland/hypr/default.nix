@@ -234,7 +234,7 @@ bind =CTRL, T, togglefloating,
 bind=$mainModSHIFT,P,exec,pomotroid --in-process-gpu
 
 # Screen shot 
-bind=ALT,R,exec,grim -g "$(slurp)" - | wl-copy
+bind=ALT,R,exec,grim -g "$(slurp)" - | wl-copy -f --type 'image/png'
 # Screen recorder
 bind=$mainModALT,R,exec,wf-recorder -g "$(slurp)"
 # Emoji selector 
