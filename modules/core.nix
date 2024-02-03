@@ -16,7 +16,12 @@
   console.keyMap = "fr";
   
   # graphics drivers / HW accel
-  hardware.opengl.enable = true;
+#  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   # enable programs
   programs = {
@@ -33,6 +38,11 @@
       };
     };
   };
+
+  services.udev.packages = [ 
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
 
   # don't ask for password for wheel group
   security.sudo.wheelNeedsPassword = false;

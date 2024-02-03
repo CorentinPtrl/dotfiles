@@ -16,5 +16,6 @@
     gnumake
     go
     nodejs_21
+    platformio
   ]);
 }
