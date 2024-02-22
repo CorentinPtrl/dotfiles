@@ -17,5 +17,8 @@
     go
     nodejs_21
     platformio
+    xorriso
+    vulkan-validation-layers
+    alsaLib.dev
   ]);
 }

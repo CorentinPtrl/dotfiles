@@ -16,7 +16,7 @@
     "resolv.conf".text = "nameserver 1.1.1.1\n";
   };
 
-  #xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   #NvidiaConfig
   hardware.opengl = {
