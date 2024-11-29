@@ -1,32 +1,122 @@
 {
-  description = "My flake";
-  
-inputs = {
-  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  home-manager = {
-   url = "github:nix-community/home-manager";
-   inputs.nixpkgs.follows = "nixpkgs";
-  };
-  flake-parts = {
-   url = "github:hercules-ci/flake-parts";
-   inputs.nixpkgs-lib.follows = "nixpkgs";
-  };
-  hyprland.url = "github:hyprwm/Hyprland";
-  aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-  aagl.inputs.nixpkgs.follows = "nixpkgs";
-  terraform-providers-bin.url = "github:CorentinPtrl/nixpkgs-terraform-providers-bin";
-  terraform-providers-bin.inputs.nixpkgs.follows = "nixpkgs";
-};
+  description = "CorentinPtrl Configuration NixOs.";
 
-outputs = inputs:
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
+  outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+      systems = ["x86_64-linux" "x86_64-darwin"];
 
-      imports = [
-        ./home/profiles
-        ./hosts
-        ./modules
-      ];
+      imports = [./home/profiles ./hosts ./lib ./modules ./pkgs];
 
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        devShells.default = pkgs.mkShell {
+          packages = [pkgs.alejandra pkgs.git config.packages.repl];
+          name = "nixland";
+          DIRENV_LOG_FORMAT = "";
+        };
+        # Nix Formatter
+        formatter = pkgs.alejandra;
+      };
     };
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "hm";
+    };
+
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fu.url = "github:numtide/flake-utils";
+
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.flake-utils.follows = "fu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hm = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+      #rev = "cba1ade848feac44b2eda677503900639581c3f4";
+    };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpaper.url = "github:hyprwm/hyprpaper";
+
+    matugen = {
+      url = "github:InioX/matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-index-db = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:MichaelPachec0/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sss = {
+      url = "github:SergioRibera/sss/ddcea6d83e7bbcdef47f124c903456495d4c2aad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+  };
 }

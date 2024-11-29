@@ -1,0 +1,20 @@
+{
+  imports = [
+    ./bat.nix
+    ./bottom.nix
+    ./cava.nix
+    ./cli.nix
+    ./gpg.nix
+    ./gitui.nix
+    #./inlyne.nix
+    ./neofetch.nix
+    ./nix.nix
+    ./screenshot-area.nix
+    ./screenshot-full.nix
+    ./skim.nix
+    ./transient-services.nix
+    ./yazi
+    ./xdg.nix
+    ./zoxide.nix
+  ];
+}

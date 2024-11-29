@@ -1,29 +1,35 @@
-{ hyprland, pkgs, ...}: {
-
+{
+  lib,
+  self,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./specialisations.nix
+    ./terminal
+    inputs.matugen.nixosModules.default
+    inputs.nix-index-db.hmModules.nix-index
+    self.nixosModules.theme
+  ];
   home = {
-    username = "corentin";
-    homeDirectory = "/home/corentin";
+    #username = "corentin";
+    #homeDirectory = "/home/corentin";
+    stateVersion = "24.05";
   };
 
-  home.packages = (with pkgs; [ 
-    nano
-    wget
-    git
-    curl 
-    appimage-run
-    sshpass
-    jdk17
-    dotnet-sdk_7
-    sshs
-    openvpn
-    gh
-    (python311.withPackages (ps: with ps; [
-      pip
-      pycryptodome
-      setuptools
-    ]))
-   ]);
+  # disable manuals as nmd fails to build often
+  manual = {
+    html.enable = false;
+    json.enable = false;
+    manpages.enable = false;
+  };
 
+  # let HM manage itself when in standalone mode
   programs.home-manager.enable = true;
-  home.stateVersion = "23.05";
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      lib = prev.lib // {colors = import "${self}/lib/colors" lib;};
+    })
+  ];
 }
