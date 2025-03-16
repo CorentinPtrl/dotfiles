@@ -37,5 +37,9 @@
     notion-app-enhanced
     openvpn
     operator-sdk
+    inetutils
+    mysql80
+    sameboy
+    gimp
  ]);
 }

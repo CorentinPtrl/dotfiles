@@ -150,7 +150,6 @@
         run = "pnpm run";
         cd = "z";
         
-        kubectl = "kubectl --insecure-skip-tls-verify";
         k = "kubectl";
       }
       // lib.optionalAttrs (config.programs.bat.enable == true) {cat = "bat";};
