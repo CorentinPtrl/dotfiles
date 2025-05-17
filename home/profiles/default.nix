@@ -11,6 +11,10 @@
       ../.
       ./zenbook
     ];
+    "corentin@ryzen" = [
+      ../.
+      ./ryzen
+    ];
   };
 
   inherit (inputs.hm.lib) homeManagerConfiguration;
@@ -23,6 +27,12 @@ in {
     homeConfiguration = {
       "corentin_zenbook" = homeManagerConfiguration {
         modules = homeImports."corentin@zenbook";
+        username = "corentin";
+        homeDirectory = "/home/corentin";
+        inherit pkgs extraSpecialArgs;
+      };
+      "corentin_ryzen" = homeManagerConfiguration {
+        modules = homeImports."corentin@ryzen";
         username = "corentin";
         homeDirectory = "/home/corentin";
         inherit pkgs extraSpecialArgs;

@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    xwaylandvideobridge
+    libsForQt5.xwaylandvideobridge
     shikane
   ];
   
@@ -12,7 +12,7 @@
     wantedBy = ["graphical-session.target"];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge";
+      ExecStart = "${pkgs.libsForQt5.xwaylandvideobridge}/bin/xwaylandvideobridge";
       Restart = "always";
     };
   };

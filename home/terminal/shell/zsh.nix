@@ -152,7 +152,7 @@
         
         k = "kubectl";
       }
-      // lib.optionalAttrs (config.programs.bat.enable == true) {cat = "bat";};
+      // lib.optionalAttrs config.programs.bat.enable {cat = "bat";};
     shellGlobalAliases = {eza = "eza --icons --git";};
   };
 }

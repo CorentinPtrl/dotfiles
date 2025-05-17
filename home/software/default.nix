@@ -50,7 +50,7 @@ in
     pkgs.swww
     pkgs.brave
     pkgs.kitty
-    pkgs.gnome.file-roller
+    pkgs.file-roller
     pkgs.python311
     #pkgs.vcpkg
     inputs.matugen.packages.${pkgs.system}.default

@@ -10,6 +10,8 @@
       repl = pkgs.callPackage ./repl {};
 
       hyper = pkgs.callPackage ./hyper {};
+      
+      deskflow = pkgs.callPackage ./deskflow {};
     };
   };
 }

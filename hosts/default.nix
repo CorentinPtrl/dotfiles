@@ -35,6 +35,26 @@
           inputs.agenix.nixosModules.default
         ];
     };
+    ryzen = nixosSystem {
+      inherit specialArgs;
+      modules =
+        desktop
+        ++ [
+          ./ryzen
+          "${mod}/programs/hyprland.nix"
+          "${mod}/services/gnome-services.nix"
+          "${mod}/services/location.nix"
+          {
+            home-manager = {
+              users.corentin.imports =
+                homeImports."corentin@ryzen";
+              extraSpecialArgs = specialArgs;
+            };
+          }
+
+          inputs.agenix.nixosModules.default
+        ];
+    };
     technofy = nixosSystem {
       inherit specialArgs;
       modules =

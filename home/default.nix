@@ -14,7 +14,8 @@
   home = {
     #username = "corentin";
     #homeDirectory = "/home/corentin";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
+#    stateVersion = "unstable";
   };
 
   # disable manuals as nmd fails to build often

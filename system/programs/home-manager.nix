@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.hm.nixosModules.default
+    inputs.aagl.nixosModules.default
   ];
 
   home-manager = {

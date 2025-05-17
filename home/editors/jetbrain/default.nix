@@ -1,7 +1,12 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, inputs,... }:
 
+let
+  unstable = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/nixpkgs-unstable.tar.gz";
+  }) {};
+in
 {
-  home.packages = (with pkgs; [
+  home.packages = with pkgs; [
     gnumake
     (ansible.override { windowsSupport = true; })
     #vmware-workstation
@@ -41,5 +46,8 @@
     mysql80
     sameboy
     gimp
- ]);
+    unstable.deskflow # Use deskflow from unstable
+    kubectl-neat
+    icu.dev
+  ];
 }

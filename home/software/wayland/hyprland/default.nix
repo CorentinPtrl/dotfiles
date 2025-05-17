@@ -11,7 +11,7 @@
       jaq
       xorg.xprop
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-      xwaylandvideobridge
+      libsForQt5.xwaylandvideobridge
     ];
     file = {
       ".config/hypr/scripts/volume" = {

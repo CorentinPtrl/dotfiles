@@ -2,7 +2,6 @@
   imports = [
     ./bat.nix
     ./bottom.nix
-    ./cava.nix
     ./cli.nix
     ./gpg.nix
     ./gitui.nix

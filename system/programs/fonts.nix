@@ -5,17 +5,21 @@
       material-symbols
       # normal fonts
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       roboto
+      
+      jetbrains-mono
 
-      maple-mono
-      maple-mono-NF
-      maple-mono-SC-NF
+      maple-mono.CN
+      maple-mono.NF
+      maple-mono.NF-CN
+#      maple-mono-NF
+#      maple-mono-SC-NF
 
       lexend
-      # nerdfonts
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      nerd-fonts.symbols-only
+      #(nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
     # causes more issues than it solves

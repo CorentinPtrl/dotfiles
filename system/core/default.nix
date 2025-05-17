@@ -28,8 +28,7 @@
   ];
 
   # don't touch this
-  system.stateVersion = lib.mkDefault "24.05";
-
+  system.stateVersion = lib.mkDefault "24.11";
   time.timeZone = lib.mkDefault "Europe/Paris";
 
   programs.nix-ld.enable = true;

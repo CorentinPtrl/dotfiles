@@ -3,7 +3,6 @@
   lib,
   ...
 }: let
-  c = config.programs.matugen.theme.colors.colors.${config.theme.name};
   pointer = config.home.pointerCursor;
   homeDir = config.home.homeDirectory;
 in {
@@ -63,14 +62,16 @@ in {
       general = {
         monitor = [
           "eDP-1,1920x1080@60,0x0,1"
+          "HDMI-A-1,1920x1080@60,1920x0,1"
+          "HDMI-A-2,1920x1080@60,0x0,1"
           "DP-3,1920x1080@60,1920x0,1"
           "DP-6,1920x1080@119,3840x0,1"
         ];
         gaps_in = 5;
         gaps_out = 5;
         border_size = 1;
-        "col.active_border" = "rgb(${c.on_primary});";
-        "col.inactive_border" = "rgb(${c.inverse_on_surface})";
+        "col.active_border" = "0xffffff";
+        "col.inactive_border" = "0xffffff";
         "no_border_on_floating" = false;
         layout = "dwindle";
         #no_cursor_warps = false;
@@ -88,12 +89,12 @@ in {
           xray = true;
         };
         fullscreen_opacity = 1;
-        drop_shadow = true;
-        shadow_ignore_window = true;
-        shadow_offset = "0 8";
-        shadow_range = 50;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(00000055)";
+        #drop_shadow = true;
+        #shadow_ignore_window = true;
+        #shadow_offset = "0 8";
+        #shadow_range = 50;
+        #shadow_render_power = 3;
+        #"col.shadow" = "rgba(00000055)";
         blurls = ["lockscreen" "waybar" "popups"];
       };
       animation = {
@@ -120,7 +121,7 @@ in {
         ];
       };
       dwindle = {
-        no_gaps_when_only = false;
+        #no_gaps_when_only = false;
         pseudotile = true;
         preserve_split = true;
       };
@@ -147,7 +148,7 @@ in {
         "$MOD, T, togglesplit"
 
         "$MODSHIFT, Space, workspaceopt, allfloat"
-        "$MODSHIFT, P, workspaceopt, allpseudotile"
+        #"$MODSHIFT, P, workspaceopt, allpseudotile"
 
         #"$MOD, Tab, cyclenext"
         #"$MOD, Tab, bringactivetotop"
