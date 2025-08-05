@@ -25,6 +25,7 @@
     htop
     btop
     sshs
+    fzf
   ];
 
   programs = {

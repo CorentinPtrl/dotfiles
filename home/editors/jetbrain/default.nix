@@ -20,7 +20,6 @@ in
     gcc
     gnumake
     go
-    #nodejs_22
     platformio
     csfml
     jetbrains-toolbox 
@@ -38,16 +37,19 @@ in
     sops
     kubernetes-helm
     spotify
-    #zed-editor
     notion-app-enhanced
     openvpn
     operator-sdk
     inetutils
     mysql80
     sameboy
-    gimp
-    unstable.deskflow # Use deskflow from unstable
+    unstable.deskflow
     kubectl-neat
     icu.dev
+    jdk21
+    dolphin-emu
+    openstackclient-full
+    cilium-cli
+    libei
   ];
 }

@@ -15,7 +15,6 @@
       systems = ["x86_64-linux" "x86_64-darwin"];
 
       imports = [./home/profiles ./hosts ./lib ./modules ./pkgs];
-
       perSystem = {
         config,
         pkgs,
@@ -78,11 +77,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
+    hyprland-protocols = {
       type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
+      url = "https://github.com/3l0w/hyprland-protocols";
+      rev = "5433c38e9755e83905376ed0faf5c624869e24b9";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      type = "git";
+      url = "https://github.com/CorentinPtrl/Hyprland";
       submodules = true;
-      #rev = "cba1ade848feac44b2eda677503900639581c3f4";
+      ref = "feat/input-capture-impl";
+      rev = "c8e7f4242133a0d6340122239ae7aa85c3617ef9";
+      inputs.hyprland-protocols.follows = "hyprland-protocols";
+      inputs.xdph.follows = "xdg-portal-hyprland";
     };
 
     hyprland-contrib = {
@@ -122,6 +132,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    xdg-portal-hyprland = {
+      type = "git";
+      url = "https://github.com/CorentinPtrl/xdg-desktop-portal-hyprland";
+      rev = "4a0100ddb1969afa86f5fa79f89ceafb84451e72";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprland-protocols.follows = "hyprland-protocols";
+    };
   };
 }

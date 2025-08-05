@@ -30,7 +30,7 @@
       ignoreSpace = true;
       path = "${config.xdg.dataHome}/zsh_history";
     };
-
+    
     initExtra = ''
       # search history based on what's typed in the prompt
       autoload -U history-search-end
@@ -94,6 +94,16 @@
         gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
         export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
       ''}
+
+      aws_fzf_profile () {
+          export AWS_PROFILE=$(awk '/^\[profile /{gsub(/[\[\]]/, ""); print $2}' ~/.aws/config | fzf --height=15 --border --reverse --ignore-case) 
+          if [ -n "$AWS_PROFILE" ]
+          then
+              echo "Switched to AWS profile: $AWS_PROFILE"
+          else
+              echo "No profile selected."
+          fi
+      }
     '';
 
     shellAliases =
@@ -125,7 +135,6 @@
 
         cat = "bat --theme=base16 --number --color=always --paging=never --tabs=2 --wrap=never";
         cp = "cp -iv";
-        du = "du-dust";
         fcd = "cd $(fd --type d | sk)";
         fm = "yazi";
         l = "eza -lF --time-style=long-iso --icons";
@@ -151,6 +160,7 @@
         cd = "z";
         
         k = "kubectl";
+        asp = "aws_fzf_profile";
       }
       // lib.optionalAttrs config.programs.bat.enable {cat = "bat";};
     shellGlobalAliases = {eza = "eza --icons --git";};

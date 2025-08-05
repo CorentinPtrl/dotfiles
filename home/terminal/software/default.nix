@@ -6,7 +6,6 @@
     ./gpg.nix
     ./gitui.nix
     #./inlyne.nix
-    ./neofetch.nix
     ./nix.nix
     ./screenshot-area.nix
     ./screenshot-full.nix
@@ -15,5 +14,6 @@
     ./yazi
     ./xdg.nix
     ./zoxide.nix
+    ./k9s
   ];
 }

@@ -2,7 +2,7 @@
 # networking configuration
 {
   environment.etc = {
-    "resolv.conf".text = "nameserver 8.8.8.8\nnameserver 1.0.0.1";
+    "resolv.conf".text = "nameserver 1.1.1.1\nnameserver 192.168.1.254\nnameserver 8.8.8.8";
   };
   networking.networkmanager = {
     enable = true;

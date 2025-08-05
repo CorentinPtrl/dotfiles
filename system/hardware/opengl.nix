@@ -1,5 +1,8 @@
 {pkgs, ...}: {
   # graphics drivers / HW accel
+  hardware.xone = {
+  enable = true;
+};
   hardware.opengl = {
     enable = true;
 #    enable32Bit = true;
