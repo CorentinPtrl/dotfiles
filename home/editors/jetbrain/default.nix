@@ -50,6 +50,6 @@ in
     dolphin-emu
     openstackclient-full
     cilium-cli
-    libei
+    lan-mouse
   ];
 }

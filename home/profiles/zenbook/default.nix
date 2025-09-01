@@ -17,7 +17,7 @@
     # system services
     ../../services/system/gpg-agent.nix
     ../../services/system/polkit-agent.nix
-    ../../services/system/screensht.nix
+    #../../services/system/screensht.nix
     ../../services/system/syncthing.nix
 
     # wayland specific

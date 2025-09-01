@@ -635,7 +635,7 @@
       "locked": {
         "lastModified": 1747914494,
         "narHash": "sha256-dOMlK1Y/nTsk3wL+cAr+aMTerxYJgxTnl3p06PV3QIU=",
-        "ref": "feat/input-capture-impl",
+        "ref": "feat/input-capture-impl-old",
         "rev": "c8e7f4242133a0d6340122239ae7aa85c3617ef9",
         "revCount": 6131,
         "submodules": true,
@@ -643,8 +643,7 @@
         "url": "https://github.com/CorentinPtrl/Hyprland"
       },
       "original": {
-        "ref": "feat/input-capture-impl",
-        "rev": "c8e7f4242133a0d6340122239ae7aa85c3617ef9",
+        "ref": "feat/input-capture-impl-old",
         "submodules": true,
         "type": "git",
         "url": "https://github.com/CorentinPtrl/Hyprland"

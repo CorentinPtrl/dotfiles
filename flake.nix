@@ -89,8 +89,7 @@
       type = "git";
       url = "https://github.com/CorentinPtrl/Hyprland";
       submodules = true;
-      ref = "feat/input-capture-impl";
-      rev = "c8e7f4242133a0d6340122239ae7aa85c3617ef9";
+      ref = "feat/input-capture-impl-old";
       inputs.hyprland-protocols.follows = "hyprland-protocols";
       inputs.xdph.follows = "xdg-portal-hyprland";
     };
