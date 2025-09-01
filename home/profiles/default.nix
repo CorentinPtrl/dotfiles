@@ -15,6 +15,10 @@
       ../.
       ./ryzen
     ];
+    "corentin@ccl" = [
+      ../.
+      ./ccl
+    ];
   };
 
   inherit (inputs.hm.lib) homeManagerConfiguration;
@@ -33,6 +37,12 @@ in {
       };
       "corentin_ryzen" = homeManagerConfiguration {
         modules = homeImports."corentin@ryzen";
+        username = "corentin";
+        homeDirectory = "/home/corentin";
+        inherit pkgs extraSpecialArgs;
+      };
+      "corentin_ccl" = homeManagerConfiguration {
+        modules = homeImports."corentin@ccl";
         username = "corentin";
         homeDirectory = "/home/corentin";
         inherit pkgs extraSpecialArgs;
